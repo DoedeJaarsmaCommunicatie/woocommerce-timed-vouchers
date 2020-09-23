@@ -6,7 +6,7 @@
  * Author URI:      https://doedejaarsma.nl
  * Text Domain:     woocommerce-timed-vouchers
  * Domain Path:     /languages
- * Version:         0.1.1
+ * Version:         0.1.2
  * Requires at least: 5.4
  * Requires PHP: 7.2
  *
@@ -21,13 +21,12 @@ defined('ABSPATH') || exit;
 defined('WOOTV_FILE') || define('WOOTV_FILE', __FILE__);
 defined('WOOTV_DIR') || define('WOOTV_DIR', __DIR__);
 
-define('WOOTV_VERSION', '0.1.1');
+define('WOOTV_VERSION', '0.1.2');
 
-require_once WOOTV_DIR . '/lib/Installer.php';
+require_once WOOTV_DIR . '/vendor/autoload.php';
 register_activation_hook(__FILE__, [Installer::class, 'install']);
 
 add_action('woocommerce_loaded', static function () {
-    require_once WOOTV_DIR . '/vendor/autoload.php';
 
     TimedVouchers::bootstrap();
 });
