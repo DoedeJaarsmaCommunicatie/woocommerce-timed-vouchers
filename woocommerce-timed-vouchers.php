@@ -20,6 +20,9 @@ defined('ABSPATH') || exit;
 
 defined('WOOTV_FILE') || define('WOOTV_FILE', __FILE__);
 defined('WOOTV_DIR') || define('WOOTV_DIR', __DIR__);
+
+define('WOOTV_VERSION', '0.1.0');
+
 require_once WOOTV_DIR . '/vendor/autoload.php';
 
 register_activation_hook(__FILE__, [Installer::class, 'install']);
