@@ -1,0 +1,26 @@
+{
+  "name": "doede-jaarsma-communicatie/woocommerce-timed-vouchers",
+  "description": "Add special product type",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "mitch",
+      "email": "mitch@doedejaarsma.nl"
+    }
+  ],
+  "require": {
+    "nesbot/carbon": "^2.40",
+    "yahnis-elsts/plugin-update-checker": "^4.10",
+    "jenssegers/blade": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "WooCommerceTimedVouchers\\": "lib/"
+    },
+    "files": [
+      "TimedVouchers.php",
+      "lib/helpers.php"
+    ]
+  }
+}
