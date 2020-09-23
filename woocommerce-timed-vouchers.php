@@ -27,7 +27,6 @@ require_once WOOTV_DIR . '/vendor/autoload.php';
 register_activation_hook(__FILE__, [Installer::class, 'install']);
 
 add_action('woocommerce_loaded', static function () {
-
     TimedVouchers::bootstrap();
 });
 

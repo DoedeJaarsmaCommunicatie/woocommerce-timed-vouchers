@@ -2,6 +2,13 @@
 
 namespace WooCommerceTimedVouchers\Models;
 
+if (!class_exists('\WC_Product')) {
+    class WC_Product_Timed_Voucher {
+        public const TYPE = 'timed-voucher';
+    }
+    return;
+}
+
 class WC_Product_Timed_Voucher extends \WC_Product
 {
     public const TYPE = 'timed-voucher';

@@ -6,7 +6,7 @@ class Rand
 {
     const CHARACTERS_ALPHA_NUM = '0123456789abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVW';
 
-    public static function generateRandomString($length = 10): string
+    public static function generateRandomString($length = 6): string
     {
         $random_string = '';
         for ($i = 0; $i < $length; $i++) {
