@@ -93,3 +93,24 @@ if (!function_exists(__NAMESPACE__ . 'get_secrets_by_product')) {
         return $secrets;
     }
 }
+
+if (!function_exists(__NAMESPACE__ . 'get_global_secrets')) {
+    function get_global_secrets(bool $valid_only = true)
+    {
+        $secrets = Secret::make()
+            ->all();
+
+
+        $secrets = array_filter($secrets, static function (Secret $secret) {
+            return $secret->order_id === -1;
+        });
+
+        if ($valid_only) {
+            $secrets = array_filter($secrets, static function (Secret $secret) {
+                return $secret->order_id === -1;
+            });
+        }
+
+        return $secrets;
+    }
+}
