@@ -39,11 +39,16 @@ class Secret extends Model
         return $valid_until? !$valid_until->isPast() : true;
     }
 
-    public function start_routes()
+    public function start_routes(): void
     {
         if (null === $this->valid_until) {
             $this->valid_until = Carbon::now()->addSeconds(WC_Product_Timed_Voucher::M_D_TIME_AVAILABLE);
             $this->patch();
         }
+    }
+
+    public function has_order(): bool
+    {
+        return $this->order_id !== -1;
     }
 }

@@ -6,6 +6,8 @@ use WooCommerceTimedVouchers\DBO\Secret;
 use WooCommerceTimedVouchers\Helpers\Rand;
 use WooCommerceTimedVouchers\Models\WC_Product_Timed_Voucher;
 
+use function WooCommerceTimedVouchers\generate_secret_for_order;
+
 class GenerateKeysForProducts
 {
     public const T_K_SECRET = '_tv_secret';
@@ -39,11 +41,7 @@ class GenerateKeysForProducts
                 $order->add_meta_data(static::T_K_SECRET, "{$product->get_id()}:{$code}");
                 $order->save_meta_data();
 
-                $secret->product_id = $product->get_id();
-                $secret->order_id = $order_id;
-                $secret->created_at = current_time('mysql');
-                $secret->secret = $code;
-                $secret->create();
+                generate_secret_for_order($order_id, $product->get_id());
             }
         }
     }
