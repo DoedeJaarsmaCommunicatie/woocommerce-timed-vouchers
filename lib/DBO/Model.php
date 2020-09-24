@@ -7,6 +7,7 @@ abstract class Model implements DBO
     protected static $call_cache = [];
 
     protected $attributes = [];
+    protected $casts = [];
 
     public function __set($name, $value)
     {
@@ -69,6 +70,10 @@ abstract class Model implements DBO
         }
 
         foreach ($data as $key => $value) {
+            if (isset($this->casts[$key])) {
+                settype($value, $this->casts[$key]);
+            }
+
             $self->{$key} = $value;
         }
 
@@ -151,7 +156,13 @@ abstract class Model implements DBO
 
     public function all(): array
     {
-        return $this->db->get_results("SELECT * FROM {$this->get_table_name()};");
+        return array_map(
+            [$this, 'map'],
+            $this->db->get_results(
+                "SELECT * FROM {$this->get_table_name()};",
+                ARRAY_A
+            )
+        );
     }
 
     /**

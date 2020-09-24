@@ -29,6 +29,11 @@ class Secret extends Model
     protected $table_name = 'secret_order_keys';
     protected $key = 'secret';
 
+    protected $casts = [
+        'order_id' => 'int',
+        'product_id' => 'int'
+    ];
+
     public function is_valid(): bool
     {
         if (!$this->valid_until) {
@@ -50,5 +55,23 @@ class Secret extends Model
     public function has_order(): bool
     {
         return $this->order_id !== -1;
+    }
+
+    public function order()
+    {
+        if (!$this->has_order()) {
+            return false;
+        }
+
+        return wc_get_order($this->order_id);
+    }
+
+    public function product()
+    {
+        if (!$this->product_id) {
+            return false;
+        }
+
+        return wc_get_product($this->product_id);
     }
 }
