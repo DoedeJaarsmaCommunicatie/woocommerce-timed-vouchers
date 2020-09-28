@@ -100,7 +100,6 @@ if (!function_exists(__NAMESPACE__ . 'get_global_secrets')) {
         $secrets = Secret::make()
             ->all();
 
-
         $secrets = array_filter($secrets, static function (Secret $secret) {
             return $secret->order_id === -1;
         });
