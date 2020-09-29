@@ -19,6 +19,7 @@ use WooCommerceTimedVouchers\Models\WC_Product_Timed_Voucher;
  * @method static Secret make($data = [])
  *
  * @method Secret find($secret)
+ * @method Secret findOn($column, $value)
  * @method Secret[] map($data)
  * @method Secret[] findManyOn($column, $operator, $value = null)
  *
