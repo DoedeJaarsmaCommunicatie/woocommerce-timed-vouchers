@@ -14,7 +14,7 @@ final class Updater
     private function __construct()
     {
         \Puc_v4_Factory::buildUpdateChecker(
-            '',
+            'https://github.com/DoedeJaarsmaCommunicatie/woocommerce-timed-vouchers/',
             WOOTV_FILE,
             'woocommerce-timed-vouchers'
         );
