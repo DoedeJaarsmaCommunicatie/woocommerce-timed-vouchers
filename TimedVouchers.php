@@ -27,6 +27,9 @@ class TimedVouchers
     {
         add_filter('product_type_selector', [AddNewProductType::class, 'add_type']);
         add_filter('woocommerce_product_class', [AddNewProductType::class, 'fix_class_loading'], 10, 2);
+        add_action('woocommerce_timed-voucher_add_to_cart', function() {
+            do_action( 'woocommerce_simple_add_to_cart' );
+        });
 
         Updater::bootstrap();
 
